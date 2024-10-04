@@ -1,0 +1,21 @@
+CustomerID,FirstName,LastName,DateOfBirth,Address,PhoneNumber,EmailAddress
+C1,James,White,1965-07-01,"456 Elm St, New York, CA",510-709-8100,james.white@hotmail.com
+C2,Emma,Davis,1978-06-10,"101 Oak Dr, Los Angeles, TX",473-479-9575,emma.davis@hotmail.com
+C3,Liam,Martinez,1954-05-09,"789 Pine Ave, Houston, CA",162-687-5160,liam.martinez@yahoo.com
+C4,Evelyn,Smith,1972-08-06,"101 Oak Dr, Chicago, IL",824-196-5144,evelyn.smith@gmail.com
+C5,Olivia,Taylor,1985-04-16,"101 Oak Dr, Houston, IL",290-373-8890,olivia.taylor@gmail.com
+C6,Lucas,Thompson,1972-02-17,"101 Oak Dr, Chicago, NY",651-809-4133,lucas.thompson@example.com
+C7,Lucas,Thompson,1980-11-24,"456 Elm St, Chicago, IL",366-818-8177,lucas.thompson@example.com
+C8,Harper,Wilson,2003-02-02,"789 Pine Ave, New York, CA",256-676-1989,harper.wilson@hotmail.com
+C9,James,Garcia,1984-02-25,"101 Oak Dr, Houston, TX",420-196-6970,james.garcia@gmail.com
+C10,Logan,Johnson,1987-08-10,"101 Oak Dr, Chicago, IL",973-909-2935,logan.johnson@gmail.com
+C11,Logan,Miller,1986-03-05,"123 Main St, Chicago, NY",948-489-8031,logan.miller@example.com
+C12,Mia,Brown,1968-09-06,"456 Elm St, New York, IL",313-678-8529,mia.brown@gmail.com
+C13,Mia,Thomas,1984-06-18,"456 Elm St, Houston, CA",211-580-9342,mia.thomas@gmail.com
+C14,Harper,Martin,1961-02-19,"123 Main St, New York, TX",494-929-1611,harper.martin@example.com
+C15,Isabella,Martin,1961-10-30,"789 Pine Ave, New York, IL",843-200-4771,isabella.martin@yahoo.com
+C16,Charlotte,Harris,1987-09-17,"123 Main St, New York, IL",582-692-6056,charlotte.harris@example.com
+C17,Mason,Martin,1992-11-28,"123 Main St, Chicago, CA",148-718-7592,mason.martin@hotmail.com
+C18,Logan,Johnson,1955-01-15,"101 Oak Dr, Los Angeles, TX",172-829-2463,logan.johnson@gmail.com
+C19,Evelyn,Robinson,1976-05-08,"789 Pine Ave, Chicago, CA",582-770-8670,evelyn.robinson@gmail.com
+C20,Benjamin,Anderson,1953-07-19,"123 Main St, Houston, CA",801-694-3633,benjamin.anderson@example.com

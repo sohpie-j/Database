@@ -1,0 +1,20 @@
+"H1","Hotel NQZUS","688 Broadway","638-350-8942","hotelnqzus@example.com",3
+"H10","Hotel JTDMN","747 Broadway","484-580-7007","hoteljtdmn@example.com",5
+"H11","Hotel HSXYH","687 Park Ave","778-944-4686","hotelhsxyh@example.com",4
+"H12","Hotel LGNQA","350 Broadway","292-825-4758","hotellgnqa@example.com",3
+"H13","Hotel NBXDY","946 Park Ave","345-475-4612","hotelnbxdy@example.com",3
+"H14","Hotel PDIOQ","939 Park Ave","164-270-5527","hotelpdioq@example.com",3
+"H15","Hotel GWTKF","117 Park Ave","865-532-5422","hotelgwtkf@example.com",4
+"H16","Hotel QHNRP","386 Main St","587-455-6258","hotelqhnrp@example.com",5
+"H17","Hotel NQGRR","849 1st Ave","361-574-3950","hotelnqgrr@example.com",3
+"H18","Hotel MVGPW","352 Broadway","733-608-9826","hotelmvgpw@example.com",3
+"H19","Hotel YBLAW","937 Elm St","380-619-6439","hotelyblaw@example.com",1
+"H2","Hotel ZRLTD","534 Elm St","229-218-8200","hotelzrltd@example.com",5
+"H20","Hotel SPJLY","673 Broadway","694-658-8282","hotelspjly@example.com",1
+"H3","Hotel QPVSL","282 Broadway","904-348-6736","hotelqpvsl@example.com",4
+"H4","Hotel JCSKB","151 Elm St","618-153-8846","hoteljcskb@example.com",5
+"H5","Hotel RGFII","610 Park Ave","262-162-1308","hotelrgfii@example.com",2
+"H6","Hotel MTBQV","172 Park Ave","449-680-8982","hotelmtbqv@example.com",3
+"H7","Hotel KNDPR","656 Broadway","169-852-9325","hotelkndpr@example.com",2
+"H8","Hotel CTMKZ","213 1st Ave","281-631-1589","hotelctmkz@example.com",5
+"H9","Hotel JLHBV","698 Elm St","958-276-9195","hoteljlhbv@example.com",1

@@ -1,0 +1,8 @@
+RoomTypeID,Name,Description
+RT1,Standard,A comfortable room with basic amenities.
+RT2,Deluxe,A luxurious room with additional space and amenities.
+RT3,Suite,An upscale suite with separate living and sleeping areas.
+RT4,Executive,A premium room with enhanced services and facilities.
+RT5,Penthouse,A lavish suite on the top floor with panoramic views.
+RT6,Studio,A spacious studio apartment with kitchenette.
+RT7,Economy,A budget-friendly room with essential amenities.
