@@ -1,0 +1,112 @@
+DROP SEQUENCE HBooking_SEQ;
+CREATE SEQUENCE HBooking_SEQ
+START WITH 100 -- or any other starting value you need
+INCREMENT BY 1
+NOCACHE; -- or CACHE depending on your needs
+
+ALTER SEQUENCE HBooking_SEQ RESTART START WITH 100;
+
+select HBooking_SEQ.currval from dual;
+select HBooking_SEQ.nextval from dual;
+
+-- trigger exsit checking
+SELECT TRIGGER_NAME
+FROM USER_TRIGGERS
+WHERE TABLE_NAME = 'HHOTEL';
+
+
+-- Insert into HCustomer if the record doesn't exist
+INSERT INTO HCustomer (IDCustomer, FirstName, LastName)
+VALUES (HCustomer_SEQ.NEXTVAL, 'Louse', 'Doftman');
+
+-- Insert into HAddress if the record doesn't exist
+INSERT INTO HAddress (IDAddress, Street, City, Province, Postcode)
+VALUES (HAddress_SEQ.NEXTVAL, '123 Ellisson St', 'Oregan', 'CA', '12345');
+
+-- testing trigger for insert
+INSERT INTO HCustomer_Address (IDCustomer_Address, StartDate, EndDate, Customer_IDCustomer, Address_IDAddress)
+VALUES (HCustomer_Address_SEQ.NEXTVAL, TO_DATE('2023-01-01', 'YYYY-MM-DD'), TO_DATE('2023-01-03', 'YYYY-MM-DD'), HCustomer_SEQ.CURRVAL, HAddress_SEQ.CURRVAL);
+
+--Verify Trigger for HBOOKING_HISTORY:
+INSERT INTO HBOOKING (IDBOOKING, BOOKINGDATE, TOTALAMOUNT, IDCUSTOMER)
+VALUES (HBOOKING_SEQ.NEXTVAL, TO_DATE('2023-02-02', 'YYYY-MM-DD'), 200.00, HCustomer_SEQ.CURRVALs);
+
+SELECT * FROM HBOOKING_HISTORY;
+
+
+--Checking Trigger
+SELECT TRIGGER_NAME
+FROM USER_TRIGGERS
+WHERE TABLE_NAME = 'HPAYMENT';
+
+--insert to HPAYMENT
+INSERT INTO HPAYMENT (IDPAYMENT, PAYMENTDATE, PAYMENTMETHOD, AMOUNT)
+VALUES (1, SYSDATE, 'Credit Card', 100.00);
+
+-- Perofrming the operation
+SELECT * FROM HPAYMENT_HISTORY WHERE IDPAYMENT = 1;
+
+--Review the trigger
+CREATE OR REPLACE TRIGGER trg_HPAYMENT_HISTORY
+BEFORE INSERT OR UPDATE OR DELETE ON HPAYMENT
+FOR EACH ROW
+BEGIN
+    IF INSERTING THEN
+        INSERT INTO HPAYMENT_HISTORY (
+            HISTORYID, IDPAYMENT, PAYMENTDATE, PAYMENTMETHOD, AMOUNT, STARTTIME, ENDTIME
+        ) VALUES (
+            HPAYMENT_HISTORY_SEQ.NEXTVAL, :NEW.IDPAYMENT, :NEW.PAYMENTDATE, :NEW.PAYMENTMETHOD, :NEW.AMOUNT, SYSDATE, NULL
+        );
+    ELSIF UPDATING THEN
+        UPDATE HPAYMENT_HISTORY
+        SET ENDTIME = SYSDATE
+        WHERE IDPAYMENT = :OLD.IDPAYMENT
+        AND ENDTIME IS NULL;
+
+        INSERT INTO HPAYMENT_HISTORY (
+            HISTORYID, IDPAYMENT, PAYMENTDATE, PAYMENTMETHOD, AMOUNT, STARTTIME, ENDTIME
+        ) VALUES (
+            HPAYMENT_HISTORY_SEQ.NEXTVAL, :NEW.IDPAYMENT, :NEW.PAYMENTDATE, :NEW.PAYMENTMETHOD, :NEW.AMOUNT, SYSDATE, NULL
+        );
+    ELSIF DELETING THEN
+        UPDATE HPAYMENT_HISTORY
+        SET ENDTIME = SYSDATE
+        WHERE IDPAYMENT = :OLD.IDPAYMENT
+        AND ENDTIME IS NULL;
+    END IF;
+END;
+
+-- Checking HROOM_History
+SELECT TRIGGER_NAME
+FROM USER_TRIGGERS
+WHERE TABLE_NAME = 'HROOM';
+
+-- insert value into 'Hbooking_payment' table
+
+INSERT INTO HBooking (IDBooking, BookingDate, TotalAmount,  IDCustomer)
+VALUES (HBOOKING_SEQ.NEXTVAL, TO_DATE('2024-01-05', 'YYYY-MM-DD'), 350.00, 6);
+
+INSERT INTO HPAYMENT (IDPayment, PaymentDate, PaymentMethod, Amount)
+VALUES (HPAYMENT_SEQ.NEXTVAL, TO_DATE('2024-01-01', 'YYYY-MM-DD'), 'Cash', 150.00);
+
+INSERT INTO HBooking_Payment (IDBooking_Payment, StartDate, EndDate, BOOKING_IDBOOKING, PAYMENT_IDPAYMENT)
+VALUES (HBooking_Payment_SEQ.NEXTVAL, TO_DATE('2024-08-01', 'YYYY-MM-DD'), TO_DATE('2024-08-10', 'YYYY-MM-DD'), 1, 1);
+
+INSERT INTO HBooking (IDBooking, BookingDate, CustomerID, RoomID, CheckInDate, CheckOutDate)
+VALUES (HBOOKING_SEQ, TO_DATE('2024-07-28', 'YYYY-MM-DD'), 2, 102, TO_DATE('2024-08-05', 'YYYY-MM-DD'), TO_DATE('2024-08-15', 'YYYY-MM-DD'));
+
+INSERT INTO HPAYMENT (IDPayment, PaymentDate, PaymentMethod, Amount)
+VALUES (HPAYMENT_SEQ.NEXTVAL, TO_DATE('2024-01-01', 'YYYY-MM-DD'), 'Cash', 150.00);
+
+INSERT INTO HBooking_Payment (IDBooking_Payment, StartDate, EndDate, BOOKING_IDBOOKING, PAYMENT_IDPAYMENT)
+VALUES (HBooking_Payment_SEQ.NEXTVAL, TO_DATE('2024-08-05', 'YYYY-MM-DD'), TO_DATE('2024-08-15', 'YYYY-MM-DD'), 2, 2);
+
+
+---updating
+UPDATE HBooking_Payment
+SET EndDate = TO_DATE('2024-08-12', 'YYYY-MM-DD')
+WHERE IDBooking_Payment = 1;
+
+-- deleting
+DELETE FROM HBooking_Payment
+WHERE IDBooking_Payment = 2;

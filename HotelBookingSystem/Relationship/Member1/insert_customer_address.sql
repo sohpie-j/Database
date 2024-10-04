@@ -1,0 +1,2 @@
+INSERT INTO HPAYMENT (IDPayment, PaymentDate, PaymentMethod, Amount)
+VALUES (HPAYMENT_SEQ.NEXTVAL, TO_DATE('2024-01-01', 'YYYY-MM-DD'), 'Cash', 150.00);
