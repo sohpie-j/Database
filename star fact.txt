@@ -1,0 +1,38 @@
+CREATE TABLE sales_fact (
+    sales_id INT AUTO_INCREMENT PRIMARY KEY,         
+
+    product_id INT NOT NULL,
+    category_id INT NOT NULL,
+    time_id INT NOT NULL,
+    region_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    operator_id INT NOT NULL,  -- Salesperson handling the transaction
+    order_id VARCHAR(50) NOT NULL,  -- Unique order identifier
+ 
+    -- Sales Metrics
+    sales_amount DECIMAL(10,2) NOT NULL,  
+    quantity_sold INT NOT NULL,   
+    profit DECIMAL(10,2) NOT NULL,      
+
+    -- Discounts & Taxes
+    discount_amount DECIMAL(10,2) DEFAULT 0.00,
+    tax_amount DECIMAL(10,2) DEFAULT 0.00,
+    cost_price DECIMAL(10,2) NOT NULL,         
+    total_revenue DECIMAL(10,2) GENERATED ALWAYS AS (sales_amount - discount_amount + tax_amount) STORED,
+
+    -- Sales Mode & Payment
+    sales_channel ENUM('Online', 'Offline') NOT NULL, 
+    payment_method ENUM('Credit Card', 'Debit Card', 'Cash', 'Bank Transfer', 'PayPal') NOT NULL,
+
+    -- Order Tracking
+    shipment_status ENUM('Pending', 'Shipped', 'Delivered', 'Returned', 'Canceled') NOT NULL DEFAULT 'Pending',
+    delivery_date DATE, 
+
+    -- Foreign Keys
+    FOREIGN KEY (product_id) REFERENCES dim_product(product_id),
+    FOREIGN KEY (category_id) REFERENCES dim_category(category_id),
+    FOREIGN KEY (time_id) REFERENCES dim_time(time_id),
+    FOREIGN KEY (region_id) REFERENCES dim_region(region_id),
+    FOREIGN KEY (customer_id) REFERENCES dim_customer(customer_id),
+    FOREIGN KEY (operator_id) REFERENCES dim_operator(operator_id)
+);
